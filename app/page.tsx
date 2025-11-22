@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 // Buradaki yolu, lib klasörünün app ile aynı seviyede olduğunu varsayarak ayarlıyoruz
-import { supabase } from '../lib/supabase'; 
+import { supabase } from '@/lib/supabase';
 
 // ----------------------------------------------------
 // VERİ ÇEKME FONKSİYONU
