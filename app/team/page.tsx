@@ -1,40 +1,63 @@
 // src/app/team/page.tsx
 import Link from 'next/link';
 
-// Örnek Ekip Verisi (Discord üzerinden alabilirsiniz)
 const teamMembers = [
     {
-        name: "Upsilon Alpha",
+        name: "Emre Gümüş",
         role: "Kurucu & Baş Yazılımcı (LUA Architect)",
         description: "Yüzlerce Roblox projesine imza atmış, sistem mimarisi ve optimizasyonda uzmanlaşmıştır. Stüdyonun teknik lideridir.",
-        contact: "discord: u_alpha",
+        contact_id: "Emre#0001",
     },
     {
-        name: "Nova Beta",
+        name: "Merve Çelik",
         role: "Harita & 3D Model Uzmanı (Builder/Artist)",
         description: "Epic ve detaylı harita tasarımları, özgün 3D assetler ve çevre modellemede yeteneklidir. Görsel standartları belirler.",
-        contact: "discord: nova_beta",
+        contact_id: "Merve#1234",
     },
     {
-        name: "Gamma Delta",
+        name: "Can Tekin",
         role: "Kalite Kontrol & Proje Yöneticisi (QC/Manager)",
         description: "Müşteri taleplerinin doğru anlaşılması, teslimat kalitesinin kontrolü ve zamanında proje yönetiminden sorumludur.",
-        contact: "discord: gamma_d",
+        contact_id: "CanTkn#5678",
     },
 ];
 
 const PRIMARY_COLOR_CLASS = 'text-indigo-400';
 
+// Basitleştirilmiş Header bileşeni
+function Header() {
+    return (
+        <header className="fixed w-full z-50 bg-gray-900/80 backdrop-blur-sm shadow-md">
+            <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+                <div className="text-2xl font-extrabold text-white">
+                    <span className={PRIMARY_COLOR_CLASS}>UPSILON</span> DEV STUDIO
+                </div>
+                <div className="space-x-8 hidden md:flex">
+                    <Link href="/projects" className="text-gray-300 hover:text-white transition duration-150">PROJELER</Link>
+                    <Link href="/about" className="text-gray-300 hover:text-white transition duration-150">HAKKIMIZDA</Link>
+                    <Link href="/team" className="text-gray-300 hover:text-white transition duration-150">EKİP</Link>
+                    <Link href="/status" className="text-gray-300 hover:text-white transition duration-150">TAKİP ET</Link>
+                    <Link href="/request" className="text-gray-300 hover:text-white transition duration-150">TALEP OLUŞTUR</Link>
+                </div>
+                <a href="#" target="_blank" className="px-5 py-2 border border-indigo-400 text-indigo-400 rounded-lg hover:bg-indigo-500 hover:text-white transition duration-200">
+                    TOPLULUĞA KATIL
+                </a>
+            </nav>
+        </header>
+    );
+}
+
 export default function TeamPage() {
     return (
         <div className="min-h-screen bg-gray-900 text-gray-300 font-sans antialiased pt-20">
+            <Header />
             <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
                 
                 <h1 className={`text-5xl font-extrabold text-white mb-4 ${PRIMARY_COLOR_CLASS}`}>
-                    Ekibimiz: Upsilon Dev'in Gücü
+                    Ekibimiz: Roblox Uzmanları
                 </h1>
                 <p className="text-xl text-gray-400 mb-12 max-w-3xl">
-                    Roblox platformunun dinamiklerini derinlemesine bilen, alanında uzman profesyonellerden oluşan çekirdek kadromuzla tanışın.
+                    Her biri kendi alanında uzman, projenizin her aşamasında en yüksek kaliteyi hedefleyen çekirdek kadromuz.
                 </p>
 
                 {/* EKİP ÜYELERİ KARTLARI */}
@@ -46,10 +69,10 @@ export default function TeamPage() {
                             
                             <p className="text-gray-400 mb-6">{member.description}</p>
                             
-                            <div className="flex justify-between items-center text-sm text-gray-500">
-                                <span className="font-mono">{member.contact}</span>
-                                <Link href="/request" className="text-indigo-400 hover:text-indigo-300 underline">
-                                    Proje Başlat
+                            <div className="flex justify-between items-center border-t border-gray-700 pt-4 mt-4">
+                                <span className="text-sm text-gray-500">İletişim ID: {member.contact_id}</span>
+                                <Link href="/request" className="text-indigo-400 font-semibold hover:underline">
+                                    Proje Başlat →
                                 </Link>
                             </div>
                         </div>
